@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { createClient } from '@/lib/supabase'
 import { FarmRecord, formatCurrency, COOP_OPTIONS, RECORD_TYPE_OPTIONS } from '@/lib/types'
 import Link from 'next/link'
-import { PlusCircle, Search, Filter, Trash2, Edit } from 'lucide-react'
+import { PlusCircle, Search, Trash2, Pencil } from 'lucide-react'
 
 export default function RecordsPage() {
   const [records, setRecords] = useState<FarmRecord[]>([])
@@ -139,7 +139,7 @@ export default function RecordsPage() {
           <table className="w-full text-sm">
             <thead>
               <tr className="bg-gray-50 border-b border-gray-100">
-                {['วันที่', 'ประเภท', 'โรงเรือน', 'แม่ไก่', 'ไข่ดี', 'แตก', 'ขาย', 'ราคา/ฟอง', 'รายได้', 'รายจ่าย', 'กำไร', 'อัตรา%', 'หมายเหตุ', ''].map(h => (
+                {['วันที่', 'ประเภท', 'โรงเรือน', 'แม่ไก่', 'ไข่ดี', 'แตก', 'ขาย', 'ราคา/ฟอง', 'รายได้', 'รายจ่าย', 'กำไร', 'อัตรา%', 'หมายเหตุ', 'จัดการ'].map(h => (
                   <th key={h} className="text-left px-3 py-3 font-medium text-gray-500 whitespace-nowrap">{h}</th>
                 ))}
               </tr>
@@ -176,10 +176,18 @@ export default function RecordsPage() {
                   </td>
                   <td className="px-3 py-2.5 text-gray-400 max-w-24 truncate">{r.notes || '-'}</td>
                   <td className="px-3 py-2.5">
-                    <button onClick={() => handleDelete(r.id)}
-                      className="p-1.5 rounded-lg text-red-400 hover:bg-red-50 hover:text-red-600 transition-colors">
-                      <Trash2 size={14} />
-                    </button>
+                    <div className="flex items-center gap-1">
+                      <Link href={`/records/${r.id}/edit`}
+                        className="p-1.5 rounded-lg text-blue-400 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                        title="แก้ไข">
+                        <Pencil size={14} />
+                      </Link>
+                      <button onClick={() => handleDelete(r.id)}
+                        className="p-1.5 rounded-lg text-red-400 hover:bg-red-50 hover:text-red-600 transition-colors"
+                        title="ลบ">
+                        <Trash2 size={14} />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}

@@ -67,11 +67,21 @@ export default function LoginPage() {
 
           {/* Logo */}
           <div className="flex flex-col items-center mb-8">
-            <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-yellow-400/50 shadow-lg mb-4 bg-navy-900 flex items-center justify-center">
-              <div className="text-5xl">🥚</div>
+            <div className="w-36 h-36 flex items-center justify-center mb-3 drop-shadow-2xl">
+              <img
+                src="/logo.png"
+                alt="แม่ผู้ช่วยฟาร์ม"
+                className="w-full h-full object-contain"
+                onError={(e) => {
+                  const t = e.currentTarget
+                  t.style.display = 'none'
+                  t.nextElementSibling?.removeAttribute('style')
+                }}
+              />
+              <div className="text-6xl hidden">🥚</div>
             </div>
-            <h1 className="text-2xl font-bold text-white">แม่ผู้ช่วยฟาร์ม</h1>
-            <p className="text-yellow-300 text-sm mt-1">Mae Phuchuay Farm</p>
+            <h1 className="font-prompt text-3xl text-white tracking-wide drop-shadow">แม่ผู้ช่วยฟาร์ม</h1>
+            <p className="text-yellow-300 text-sm mt-1 tracking-widest uppercase font-medium">Mae Phuchuay Farm</p>
             <p className="text-white/60 text-xs mt-1">ไข่สดใหม่ทุกวัน จากฟาร์ม!</p>
           </div>
 

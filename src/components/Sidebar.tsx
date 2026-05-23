@@ -32,14 +32,24 @@ export default function Sidebar() {
   const SidebarContent = () => (
     <div className="flex flex-col h-full">
       {/* Logo */}
-      <div className="px-6 py-6 border-b border-white/10">
+      <div className="px-5 py-5 border-b border-white/10">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-yellow-400 flex items-center justify-center text-xl">
-            🥚
+          <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+            <img
+              src="/logo.png"
+              alt="แม่ผู้ช่วยฟาร์ม"
+              className="w-12 h-12 object-contain drop-shadow"
+              onError={(e) => {
+                const t = e.currentTarget
+                t.style.display = 'none'
+                t.nextElementSibling?.removeAttribute('style')
+              }}
+            />
+            <div className="text-2xl hidden">🥚</div>
           </div>
           <div>
-            <div className="text-white font-bold text-sm leading-tight">แม่ผู้ช่วยฟาร์ม</div>
-            <div className="text-yellow-300/70 text-xs">Mae Phuchuay Farm</div>
+            <div className="font-prompt text-white text-sm leading-tight">แม่ผู้ช่วยฟาร์ม</div>
+            <div className="text-yellow-300/70 text-xs mt-0.5">Mae Phuchuay Farm</div>
           </div>
         </div>
       </div>
@@ -86,8 +96,9 @@ export default function Sidebar() {
       <div className="lg:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 py-3 shadow-lg"
         style={{ background: '#07122d' }}>
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-yellow-400 flex items-center justify-center text-lg">🥚</div>
-          <span className="text-white font-bold text-sm">แม่ผู้ช่วยฟาร์ม</span>
+          <img src="/logo.png" alt="logo" className="w-8 h-8 object-contain"
+            onError={(e) => { e.currentTarget.style.display='none' }} />
+          <span className="font-prompt text-white text-sm">แม่ผู้ช่วยฟาร์ม</span>
         </div>
         <button onClick={() => setMobileOpen(!mobileOpen)} className="text-white p-1">
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}

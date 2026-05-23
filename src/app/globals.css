@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap');
 
+@font-face {
+  font-family: 'Prompt';
+  src: url('/fonts/Prompt-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,6 +20,12 @@
 body {
   font-family: 'Noto Sans Thai', sans-serif;
   background-color: #f8fafc;
+}
+
+/* ใช้ฟอนต์ Prompt สำหรับหัวข้อและชื่อแบรนด์ */
+.font-prompt {
+  font-family: 'Prompt', 'Noto Sans Thai', sans-serif;
+  font-weight: 900;
 }
 
 /* Scrollbar */
