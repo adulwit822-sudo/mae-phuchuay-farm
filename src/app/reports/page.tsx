@@ -141,7 +141,7 @@ export default function ReportsPage() {
     )
   }
 
-  const availableYears = [...new Set(monthly.map(m => m.year))].sort()
+  const availableYears = Array.from(new Set(monthly.map((m) => m.year))).sort((a, b) => a - b)
 
   return (
     <div className="p-4 md:p-6 lg:p-8 max-w-7xl mx-auto">
